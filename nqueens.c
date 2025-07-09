@@ -22,25 +22,23 @@ void nqueens(int x[],int n){
     }
     if(x[k]<=n){
       if(k==n){
-        printf("\nSolution %d is :[",++solutioncount);
+        printf("%d solution is [",++solutioncount);
         for(int i=1;i<=n;i++){
-        printf("%d",x[i]);
+          printf("%d",x[i]);
+        }
+        printf("]\n");
       }
-      printf("]\n");
-    }
-    k=k+1;
-    x[k]=0;
-  }
-  
-    else{
+        k=k+1;
+        x[k]=0;
+      
+    }else{
       k=k-1;
     }
-    
 
-    
+
+    }
   }
-
-}
+      
 void main(){
   int x[10000],n;
   printf("Enter the number of queens\n");

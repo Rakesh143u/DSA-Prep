@@ -1,7 +1,7 @@
 #include<stdio.h>
 void dijkstra(int n,int cost[100][100],int src,int dest,int s[],int d[],int p[]){
-    s[src]=1;
     int min,u;
+    s[src]=1;
     for(int i=1;i<=n-1;i++){
         min=999;
         u=0;
@@ -11,9 +11,8 @@ void dijkstra(int n,int cost[100][100],int src,int dest,int s[],int d[],int p[])
                 u=j;
             }
         }
-        if(u==dest){
-            return;
-        }
+        
+        
         s[u]=1;
         for(int v=1;v<=n;v++){
             if(s[v]==0&&d[u]+cost[u][v]<d[v]){
@@ -33,7 +32,9 @@ void printpath(int src,int dest,int d[],int p[]){
         printf("%d<-",i);
         i=p[i];
     }
+    
     printf("%d=%d",src,d[dest]);
+    printf("\n");
 }
 }
 
@@ -49,8 +50,7 @@ void main(){
     }
     printf("Enter the src\n");
     scanf("%d",&src);
-    printf("Enter the dest\n");
-    scanf("%d",&dest);
+   
     for(int i=1;i<=n;i++){
         
         s[i]=0;
@@ -59,8 +59,9 @@ void main(){
     }
     
     dijkstra(n,cost,src,dest,s,d,p);
-    printf("The shortest path and dest from %d to %d \n",src,dest);
+    printf("The shortest path and dest from %d to \n",src);
+    for(int dest=1;dest<=n;dest++){
     printpath(src,dest,d,p);
-
+    }
 
  }

@@ -1,52 +1,59 @@
 #include<stdio.h>
- void simplemerge(int a[1000],int low,int mid,int high){
-    int i=low;
-    int k=low;
-    int j=mid+1;
-    int temp[1000];
+#include<stdlib.h>
+void simplemerge(int a[],int low,int mid,int high){
+    int i,j,k,temp[1000];
+    i=low;
+    j=mid+1;
+    k=low;
     while(i<=mid&&j<=high){
-        if(a[i]<=a[j]){
-            temp[k++]=a[i++];
+        if(a[i]<a[j]){
+            temp[k]=a[i];
+            i=i+1;
+            k=k+1;
         }else{
-    temp[k++]=a[j++];
-
+            temp[k]=a[j];
+            j=j+1;
+            k=k+1;
         }
     }
-    while(j<=high){
-        temp[k++]=a[j++];
-
-    }
     while(i<=mid){
-        temp[k++]=a[i++];
+        temp[k]=a[i];
+        i=i+1;
+        k=k+1;
+    }
+    while(j<=high){
+        temp[k]=a[j];
+        j=j+1;
+        k=k+1;
     }
     for(i=low;i<=high;i++){
         a[i]=temp[i];
     }
-
- }
- void mergesort(int a[1000],int low,int high){
-    int mid;
+}
+void mergesort(int a[],int low,int high){
     if(low<high){
-    mid=(low+high)/2;
-    mergesort(a,low,mid);
-    mergesort(a,mid+1,high);
-    simplemerge(a,low,mid,high);
-    }
- }
+        int mid=(low+high)/2;
+        mergesort(a,low,mid);
+        mergesort(a,mid+1,high);
+        simplemerge(a,low,mid,high);
 
-void main(){
-    int n,a[1000];
-    printf("enter the number of elements\n");
-    scanf("%d",&n);
-    printf("enter the elements of array\n");
-    for(int i=0;i<n;i++){
-        scanf("%d",&a[i]);
+
     }
-    mergesort(a,0,n-1);
-    printf("The sorted array is :\n");
-    for(int i=0;i<n;i++){
+}
+void main(){
+    int i,n,a[1000];
+    printf("enter number of elements\n");
+    scanf("%d",&n);
+    for(i=0;i<n;i++){
+        a[i]=rand()%1000;
+    }
+    for(i=0;i<n;i++){
         printf("%d\t",a[i]);
     }
-    
-    
+    mergesort(a,0,n-1);
+    printf("the sorted array is\n");
+    for(i=0;i<n;i++){
+        printf("%d\t",a[i]);
+    }
+
 }

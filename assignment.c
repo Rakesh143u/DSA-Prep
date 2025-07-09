@@ -1,6 +1,7 @@
 # include <stdio.h> 
 #include<stdlib.h>
-int partition(int a[],int low,int high){
+#include<string.h>
+int partition(char a[],int low,int high){
     int i,j,key,temp;
     key=a[low];
     i=low+1;
@@ -26,7 +27,7 @@ int partition(int a[],int low,int high){
 
 }
 
- void quicksort(int a[],int low,int high){
+ void quicksort(char a[],int low,int high){
     int k;
     if(low<high){
         k=partition(a,low,high);
@@ -37,18 +38,13 @@ int partition(int a[],int low,int high){
     }
  }
  void main(){
-    int n,a[1000];
-    printf("enter the number of elements\n");
-    scanf("%d",&n);
-    printf("enter the elements of array\n");
-    for(int i=0;i<n;i++){
-        a[i]=rand()%1000;
-    }
-    quicksort(a,0,n-1);
-    printf("The sorted array is :\n");
-    for(int i=0;i<n;i++){
-        printf("%d\t",a[i]);
-    }
+    int n;
+    char s[1000];
+   printf("Enter a word\n");
+   scanf("%s",s);
+   n=strlen(s);
+    quicksort(s,0,n-1);
+    printf("sorted word is %s",s);
     
     
 }
