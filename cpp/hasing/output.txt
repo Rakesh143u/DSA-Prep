@@ -1,0 +1,2 @@
+least freq is:3->1
+mpost ferq is:2->3
