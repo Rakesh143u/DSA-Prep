@@ -19,7 +19,7 @@ int main(){
     // O(1) for best and avg case and O(N) for worst case for timecomplexity
     int maximum=INT_MIN;
     int minimum=INT_MAX;
-    int most=-1,least=-1;
+    int most=0,least=0;
 
     for(auto &pair:mpp){
         if(pair.second>maximum){
